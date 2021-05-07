@@ -30,7 +30,11 @@
                     <td>
                         <a href="{{route('productos.show', ['producto' => $producto->id])}}" class="btn btn-primary">Ver</a>
                         <a href="{{route('productos.edit', ['producto' => $producto->id])}}" class="btn btn-success">Editar</a>
-                        <a href="#" class="btn btn-danger">Eliminar</a>
+                        <form action="{{route('productos.destroy', ['producto' => $producto->id])}}" class="d-inline" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar" class="btn btn-danger">
+                        </form>
                     </td>
                 </tr>
                 @endforeach

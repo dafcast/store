@@ -55,7 +55,7 @@ class ProductoController extends Controller
         $producto = new Producto($data);
         $producto->categoria_id = $data['categoria'];
         $producto->save();
-        return back();
+        return redirect()->action('ProductoController@index');
     }
 
     /**
@@ -123,6 +123,8 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+
+        return back();
     }
 }
