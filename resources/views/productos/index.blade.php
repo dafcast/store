@@ -18,7 +18,7 @@
                 @foreach($productos as $producto)
                 <tr>
                     <th scope="row">{{$producto->nombre}}</th>
-                    <td>{{$producto->categoria_id}}</td>
+                    <td>{{$producto->categoria->nombre}}</td>
                     <td>{{$producto->stock}}</td>
                     <td>
                         @if($producto->ultima_venta)
@@ -28,8 +28,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="#" class="btn btn-primary">Ver</a>
-                        <a href="#" class="btn btn-success">Editar</a>
+                        <a href="{{route('productos.show', ['producto' => $producto->id])}}" class="btn btn-primary">Ver</a>
+                        <a href="{{route('productos.edit', ['producto' => $producto->id])}}" class="btn btn-success">Editar</a>
                         <a href="#" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
