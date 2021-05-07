@@ -17,4 +17,8 @@ Los comandos para ejecutar son:
 <p>php artisan migrate<p>
 <p>php artisan db:seed<p>
 
+<p>Para editar los productos, debe crear un usuario o iniciar sesión con el usuario por defecto:</p>
+<p>correo: correo@correo.com</p>
+<p>contraseña: 12345678</p>
+
 

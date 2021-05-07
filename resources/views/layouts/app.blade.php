@@ -21,6 +21,12 @@
 </head>
 <body>
     <div id="app">
+        @if(session('mensaje'))
+            <div class="text-center text-success">
+            <h1>{{session('mensaje')}}</h1>
+            </div>
+        @endif
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

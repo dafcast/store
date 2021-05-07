@@ -47,5 +47,14 @@ class ProductoSeeder extends Seeder
             'categoria_id' => 4,
             'stock' => 223,
         ]);
+
+        Producto::create([
+            'nombre' => 'Agua',
+            'referencia' => '#005',
+            'precio' => 156824.33,
+            'peso' => 2.5,
+            'categoria_id' => 4,
+            'stock' => 0,
+        ]);
     }
 }

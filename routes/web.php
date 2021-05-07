@@ -29,3 +29,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/productos{producto}','ProductoController@update')->name('productos.update');
     Route::delete('/productos{producto}','ProductoController@destroy')->name('productos.destroy');
 });
+
+Route::get('/productos{producto}/comprar','ProductoController@comprar')->name('productos.comprar');

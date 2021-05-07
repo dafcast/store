@@ -127,4 +127,26 @@ class ProductoController extends Controller
 
         return back();
     }
+
+    /**
+     * Comprar un producto.
+     *
+     * @param  \App\Producto  $producto
+     * @return \Illuminate\Http\Response
+     */
+    public function comprar(Producto $producto)
+    {
+        $mensaje = '';
+        if($producto->stock > 0){
+            $producto->ultima_venta = now();
+            $producto->stock = $producto->stock - 1;
+            $producto->save();
+            $mensaje = "Producto: $producto->nombre Comprado!";
+        }else{
+            $mensaje = "El producto: $producto->nombre no tiene stock!";
+        }
+
+
+        return back()->with(['mensaje' => $mensaje]);
+    }
 }
