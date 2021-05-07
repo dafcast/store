@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Producto;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -14,7 +15,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::all();
+
+        return view('productos.index',[
+            'productos' => $productos 
+        ]);
     }
 
     /**
@@ -24,7 +29,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('productos.create', [
+            'categorias' => $categorias
+        ]);
     }
 
     /**
@@ -35,7 +43,19 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required',
+            'referencia' => 'required',
+            'precio' => 'required|numeric',
+            'peso' => 'required|numeric',
+            'categoria' => 'required',
+            'stock' => 'required|numeric'
+        ]);
+
+        $producto = new Producto($data);
+        $producto->categoria_id = $data['categoria'];
+        $producto->save();
+        return back();
     }
 
     /**

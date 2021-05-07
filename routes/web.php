@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/productos','ProductoController@index')->name('productos.index');
+    Route::get('/productos/create','ProductoController@create')->name('productos.create');
+    Route::post('/productos','ProductoController@store')->name('productos.store');
+
+});
